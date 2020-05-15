@@ -6,5 +6,11 @@ var a = 11;
 var b = 7;
 
 //Решение
-b = [a, (a = b)][0];
+a = a + b;
+b = a - b;
+a = a - b;
+
 console.log(`a = ${a} \nb = ${b}`);
+//или
+// b = [a, (a = b)][0];
+// console.log(`a = ${a} \nb = ${b}`);
