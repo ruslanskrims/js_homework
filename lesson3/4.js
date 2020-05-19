@@ -12,7 +12,7 @@
  * - Если в качестве первого параметра передана не строка — нужно вернуть null.
  */
 
-const PRICE = 1;
+const PRICE = "$120";
 
 // Решение
 const extractCurrencyValue = (source) => {
