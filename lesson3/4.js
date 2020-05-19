@@ -12,13 +12,12 @@
  * - Если в качестве первого параметра передана не строка — нужно вернуть null.
  */
 
-const PRICE = "$120";
+const PRICE = 1;
 
 // Решение
 const extractCurrencyValue = (source) => {
   if (typeof source !== "string") {
-    throw new Error("Should be a String type parameter");
-    source = null;
+    return null;
   } else {
     source = Number(source.slice(1));
   }
