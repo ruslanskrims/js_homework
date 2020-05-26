@@ -20,11 +20,10 @@
 // }
 
 ////////////////// Решение //////////////////
-const value = "c";
+const value = "";
 if (value === "a") {
   console.log("a");
 } else if (value === "b" || value === "c" || value === "d" || value === "e") {
   console.log("Others");
-} else {
-  console.log("Unknown");
 }
+console.log("Unknown");

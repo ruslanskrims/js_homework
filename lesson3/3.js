@@ -23,7 +23,7 @@ const truncate = (string, maxLength) => {
     throw new Error("Second parameter should be a number type");
   }
   const result =
-    string.length > maxLength ? string.slice(0, maxLength - 3) + "..." : string;
+    string.length > maxLength ? string.slice(0, maxLength - 3) + `...` : string;
   return result;
 };
 
