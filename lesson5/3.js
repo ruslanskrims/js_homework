@@ -9,13 +9,18 @@
 
 // Решение
 const f = (first, second, third) => {
-  if (
-    typeof first !== "number" ||
-    typeof second !== "number" ||
-    typeof third !== "number"
-  ) {
+  try {
+    if (
+      typeof first !== "number" ||
+      typeof second !== "number" ||
+      typeof third !== "number"
+    ) {
+      throw new Error("Parameters should be a number type!");
+    }
+  } catch (error) {
     throw new Error("Parameters should be a number type!");
   }
+
   return (first - second) / third;
 };
 

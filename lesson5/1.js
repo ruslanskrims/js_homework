@@ -12,7 +12,7 @@ const f = (arg) => {
   if (typeof arg !== "number") {
     throw new Error("Parameter should be a number type");
   }
-  return arg * arg * arg;
+  return Math.pow(arg, 3);
 };
 
 console.log(f(2)); // 8

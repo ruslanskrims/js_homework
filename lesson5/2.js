@@ -11,12 +11,16 @@
 // Решение
 //ES6
 
-const f = function () {
+const f = (...args) => {
   let result = null;
 
-  for (let arg of arguments) {
-    if (typeof arg !== "number") {
-      throw new Error("Parameter should be a number type!");
+  for (let arg of args) {
+    try {
+      if (typeof arg !== "number") {
+        throw new Error("Arguments must have numbers");
+      }
+    } catch (err) {
+      throw new Error(`${err.message}`);
     }
     result += arg;
   }
