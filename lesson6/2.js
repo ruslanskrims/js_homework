@@ -35,14 +35,13 @@ const filter = (arr, cb) => {
     return null;
   }
 
-  let res = [];
   for (let i = 0; i < array.length; i++) {
     const value = array[i];
     if (cb(value, i, array)) {
-      res.push(value);
+      filteredArr.push(value);
     }
   }
-  return res;
+  return filteredArr;
 };
 
 const filteredArray = filter(array, (element, index, arrayRef) => {

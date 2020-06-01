@@ -20,11 +20,16 @@ const array = [1, 2, "Добро пожаловать.", 4, 5, 6];
 
 // Решение
 const some = (arr, cb) => {
-  if (!Array.isArray(arr)) {
-    throw new Error("First argument should be an array");
-  }
-  if (typeof cb !== "function") {
-    throw new Error("Second argument should be a function");
+  try {
+    if (!Array.isArray(arr)) {
+      throw new Error("First argument should be an array");
+    }
+    if (typeof cb !== "function") {
+      throw new Error("Second argument should be a function");
+    }
+  } catch (err) {
+    console.log(err.message);
+    return null;
   }
 
   for (let i = 0; i < arr.length; i++) {
