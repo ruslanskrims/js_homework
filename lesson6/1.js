@@ -19,28 +19,35 @@
 const array = [1, 2, 3];
 
 // Решение
-const forEach = (arr, cb) => {
-  try {
-    if (!Array.isArray(arr)) {
-      throw new Error("First argument should be an array!");
-    }
 
-    if (typeof cb !== "function") {
-      throw new Error("Second argument should be a function!");
-    }
-  } catch (err) {
-    console.log(err.message);
-    return null;
+const checkArray = (arr) => {
+  if (!Array.isArray(arr)) {
+    throw new Error("First argument should be an array!");
   }
+};
 
+const checkCb = (cb) => {
+  if (typeof cb !== "function") {
+    throw new Error("Second argument should be a function!");
+  }
+};
+
+const forEach = (arr, cb) => {
+  checkArray(arr);
+  checkCb(cb);
   for (let i = 0; i < array.length; i++) {
     cb(array[i], i, array);
   }
 };
 
-const result = forEach(array, (item, idx, arrRef) => {
-  console.log(`Item : ${item}, Index: ${idx}, Array Reference: ${arrRef}`);
-});
-console.log(result); // undefined
+try {
+  const cb = (item, idx, arrRef) => {
+    console.log(`Item : ${item}, Index: ${idx}, Array Reference: ${arrRef}`);
+    console.log(result); // undefined
+  };
+  const filteredArray = filter(array, cb);
+} catch (err) {
+  console.error(err.message);
+}
 
 exports.forEach = forEach;

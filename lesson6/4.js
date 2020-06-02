@@ -29,7 +29,7 @@ const some = (arr, cb) => {
     }
   } catch (err) {
     console.log(err.message);
-    return null;
+    return;
   }
 
   for (let i = 0; i < arr.length; i++) {
