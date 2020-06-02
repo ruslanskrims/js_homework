@@ -20,7 +20,7 @@ const array = [1, 2, 3, 4, 5];
 const INITIAL_ACCUMULATOR = 6;
 
 // Решение
-const reduce = (arr, cb, init = 0) => {
+const reduce = (arr, cb, init = arr[0]) => {
   try {
     if (!Array.isArray(arr)) {
       throw new Error("First argument should be an array");
