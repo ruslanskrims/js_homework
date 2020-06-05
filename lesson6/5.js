@@ -20,18 +20,21 @@ const array = [1, 2, 3, 4, 5];
 const INITIAL_ACCUMULATOR = 6;
 
 // Решение
-const reduce = (arr, cb, init = arr[0]) => {
-  try {
-    if (!Array.isArray(arr)) {
-      throw new Error("First argument should be an array");
-    }
-    if (typeof cb !== "function") {
-      throw new Error("Second argument should be a function");
-    }
-  } catch (error) {
-    console.log(err.message);
-    return null;
+const checkForArray = (arr) => {
+  if (!Array.isArray(arr)) {
+    throw new Error("First argument should be an array!");
   }
+};
+
+const checkForFunc = (func) => {
+  if (typeof func !== "function") {
+    throw new Error("Second argument should be a function!");
+  }
+};
+
+const reduce = (arr, cb, init = arr[0]) => {
+  checkForArray(arr);
+  checkForFunc(cb);
   let result = init;
   for (let i = 0; i < arr.length; i++) {
     result = cb(result, arr[i], i, arr);
@@ -39,16 +42,17 @@ const reduce = (arr, cb, init = arr[0]) => {
   return result;
 };
 
-const result = reduce(
-  array,
-  (accumulator, element, index, arrayRef) => {
+try {
+  const cb = (accumulator, element, index, arrayRef) => {
     console.log(`${index}:`, accumulator, element, arrayRef);
 
     return accumulator + element;
-  },
-  INITIAL_ACCUMULATOR
-);
+  };
+  const result = reduce(array, cb, INITIAL_ACCUMULATOR);
 
-console.log(result); // 21
+  console.log(result); // 21
+} catch (error) {
+  console.error(error.message);
+}
 
 exports.reduce = reduce;

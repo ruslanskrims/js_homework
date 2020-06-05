@@ -43,9 +43,8 @@ const forEach = (arr, cb) => {
 try {
   const cb = (item, idx, arrRef) => {
     console.log(`Item : ${item}, Index: ${idx}, Array Reference: ${arrRef}`);
-    console.log(result); // undefined
   };
-  const filteredArray = filter(array, cb);
+  forEach(array, cb);
 } catch (err) {
   console.error(err.message);
 }

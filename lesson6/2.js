@@ -16,40 +16,48 @@
  * - Второй аргумент встроенного метода filter (thisArg) имплементировать не нужно.
  */
 
-const array = ["Доброе утро!", "Добрый вечер!", 3, 512, "#", "До свидания!"];
+const array = ["Доброе утро!", "Добрый вечер!!!", 3, 512, "#", "До свидания!"];
 
 // Решение
 
-const filter = (arr, cb) => {
-  let filteredArr = [];
-  try {
-    if (!Array.isArray(arr)) {
-      throw new Error("First argument should be an array!");
-    }
-
-    if (typeof cb !== "function") {
-      throw new Error("Second argument should be a function!");
-    }
-  } catch (err) {
-    console.log(err.message);
-    return null;
+const checkForArray = (arr) => {
+  if (!Array.isArray(arr)) {
+    throw new Error("First argument should be an array!");
   }
-
-  for (let i = 0; i < array.length; i++) {
-    const value = array[i];
-    if (cb(value, i, array)) {
-      filteredArr.push(value);
-    }
-  }
-  return filteredArr;
 };
 
-const filteredArray = filter(array, (element, index, arrayRef) => {
-  console.log(`Index: ${index}:, Element: ${element}, Array Ref: ${arrayRef}`);
+const checkForFunc = (func) => {
+  if (typeof func !== "function") {
+    throw new Error("Second argument should be a function!");
+  }
+};
 
-  return element === "Добрый вечер!";
-});
+const filter = (arr, cb) => {
+  let filteredArray = [];
+  checkForArray(arr);
+  checkForFunc(cb);
 
-console.log(filteredArray); // ['Добрый вечер!']
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+    if (cb(element, i, arr)) {
+      filteredArray.push(element);
+    }
+  }
+  return filteredArray;
+};
+
+try {
+  const cb = (element, index, arrayRef) => {
+    console.log(
+      `Index: ${index}:, Element: ${element}, Array Ref: ${arrayRef}`
+    );
+
+    return element === "Добрый вечер!!!";
+  };
+  const filteredArray = filter(array, cb);
+  console.log(filteredArray); // ['Добрый вечер!']
+} catch (error) {
+  console.error(error.message);
+}
 
 exports.filter = filter;
