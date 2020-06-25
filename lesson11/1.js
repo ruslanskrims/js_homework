@@ -17,16 +17,26 @@
 
 // Решение
 const createNumberGenerator = () => {
-  const numbers = [];
+  const numbersArr = [];
 
   return () => {
-    let newNumber = Math.floor(Math.random() * 100 + 1);
-
-    if (numbers.indexOf(newNumber) !== -1) {
-      throw new Error("Randomly generated number has been already used");
+    if (numbersArr.length === 100) {
+      throw new Error("Max amount of numbers has been reached");
     }
-    numbers.push(newNumber);
-    return newNumber;
+
+    const getNum = () => {
+      const newNumber = Math.floor(Math.random() * 100 + 1);
+
+      const arrayIncludesNum = numbersArr.includes(newNumber);
+
+      if (!arrayIncludesNum) {
+        numbersArr.push(newNumber);
+        return newNumber;
+      } else {
+        return getNum();
+      }
+    };
+    return getNum();
   };
 };
 
