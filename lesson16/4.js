@@ -12,16 +12,25 @@
  */
 
 // Решение
+checkForString = (string) => {
+  if (typeof string !== "string") {
+    throw new Error("You should pass a string as an argument");
+  }
+};
+
 class Stringer {
   reverse(string) {
+    checkForString(string);
     return string.split("").reverse().join("");
   }
 
   uppercaseFirst(string) {
+    checkForString(string);
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   uppercaseAll(string) {
+    checkForString(string);
     const result = string
       .split(" ")
       .map((word) => {

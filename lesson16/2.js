@@ -16,27 +16,31 @@
 
 // Решение
 class Worker {
+  #firstName = null;
+  #lastName = null;
+  #rate = null;
+  #days = null;
   constructor(firstName, lastName, rate, days) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.rate = rate;
-    this.days = days;
+    this.#firstName = firstName;
+    this.#lastName = lastName;
+    this.#rate = rate;
+    this.#days = days;
   }
 
   getName() {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.#firstName} ${this.#lastName}`;
   }
 
   getRate() {
-    return this.rate;
+    return this.#rate;
   }
 
   getDays() {
-    return this.days;
+    return this.#days;
   }
 
   getSalary() {
-    return this.rate * this.days;
+    return this.#rate * this.#days;
   }
 }
 
