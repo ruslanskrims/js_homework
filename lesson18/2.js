@@ -11,18 +11,18 @@
 // Решение
 class Customers {
   constructor() {
-    this.arr = [];
+    this.array = [];
   }
 
   add(object) {
     if (!object.name) {
       throw new Error("Name is required!");
     }
-    this.arr.push(object);
+    this.array.push(object);
   }
 
   *[Symbol.iterator]() {
-    const filteredArray = this.arr.filter(
+    const filteredArray = this.array.filter(
       (item) => item.hasOwnProperty("verified") && item.verified === true
     );
 
